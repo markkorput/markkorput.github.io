@@ -1,15 +1,16 @@
 body { font-family: Helvetica, Arial, Sans-Serif; font-size: 14px; }
+a { color: black; text-decoration: none; margin-bottom: 2px; }
+a:hover{ text-decoration: underline; }
 
 #menu { position: fixed; top: 30px; left: 40px; line-height: 20px; background-color: rgba(255,255,255,0.95); padding: 10px;}
 #menu span.subtitle{ display: block; font-style: italic; margin-bottom: 10px; }
-#menu a{ display: block; color: black; text-decoration: none; margin-bottom: 2px; font-size: 12px}
-#menu a:hover{ text-decoration: underline; }
+#menu a{ display: block; font-size: 12px; }
 
-.page { display: none; padding:0; margin:55px 0 0 200px; width: 600px; }
 
-.page iframe.youtube{ display: block; width: 560px; height: 315px; }
+.page { display: none; padding:0; margin:55px 0 0 250px; width: 600px; }
+.page p.details{ font-size: 12px; color: #666; }
+.page a{ display: block; font-weight: bold; }
+.page img,
+.page iframe { display: block; width: 100%; margin:0 0 20px 0}
+.page iframe.youtube{ display: block; width: 600px; height: 337px; }
 .page iframe.youtube.small{ display: inline-block; width: 187px; height: 105px; }
-
-.portfolio section {display: block; padding:0; margin:0; width:100%}
-.portfolio section img,
-.portfolio section iframe { display: block; width: 100%; margin:0 0 20px 0}

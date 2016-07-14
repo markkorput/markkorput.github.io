@@ -15,8 +15,8 @@ $(document).ready(function(){
   });*/
 
   var router = new MarkRouter();
-  console.log('Backbone.history.start');
-  Backbone.history.start({pushState: false});
+  // console.log('Backbone.history.start');
+  Backbone.history.start({pushState: Backbone.history._hasPushState});
 });
 
 var MarkRouter = Backbone.Router.extend({
@@ -29,18 +29,14 @@ var MarkRouter = Backbone.Router.extend({
   initialize: function(options){
     var that = this;
 
-    console.log('router init');
-    // this.route("contact", 'cntct', function(){
-    //   console.log('cntccallback');
+    // console.log('router init');
+
+    // // Trap links
+    // $('body').delegate('a[href]:not([href^="#"])', 'click', function (e) {
+    //   e.preventDefault();
+    //   that.navigate($(this).attr('href'), {trigger: true});
     // });
 
-    // Trap links
-    /*
-    $('body').delegate('a[href]:not([href^="#"])', 'click', function (e) {
-      e.preventDefault();
-      that.navigate($(this).attr('href'), {trigger: true});
-    });
-*/
     // Block anchors for hash-based history
     if (!Backbone.history._hasPushState) {
       $('body').delegate('a[href^="#"]', 'click', function (e) {
@@ -59,7 +55,7 @@ var MarkRouter = Backbone.Router.extend({
   },*/
 
   page: function(pageName){
-    console.log('page', pageName);
+    //console.log('page', pageName);
     showPage(pageName);
   }
 
