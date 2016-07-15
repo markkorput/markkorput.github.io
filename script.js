@@ -24,37 +24,56 @@ $(document).ready(function(){
       getContentLine: function(){
         // clear
         this.el.html('');
+        // adding claibrating class disables word-wrap (which, when enabled,
+        // never allows this element to reach greater width than the document element)
         this.el.addClass('calibrating');
 
+        var highlight = Math.floor(Math.random() * 10);
         var cap = 100;
         for(var i=0; i<cap; i++){
+          // this enough?
           if(this.wideEnough()){
+            // this is the content we'll use for a single line
             var result = this.el.html();
+            // reset element
             this.el.html('');
             this.el.removeClass('calibrating');
+            // return result
             return result;
           }
 
-          this.el.append(this.txt);
+          // add a piece of content
+          if(i == highlight){
+            this.el.append('<span class="highlight">'+this.txt+'</span>');
+          } else {
+            this.el.append(this.txt);
+          }
         }
 
         console.log('backdrop line content cap reached');
+        // reset element
         this.el.html('');
         this.el.removeClass('calibrating');
+        // no backdrop content this time
         return '';
       },
 
       start: function(){
         var that = this;
 
+        // we already know what content to use for each line?
         if(this.contentLine){
+          // clear element
           this.el.html('');
+          // start adding lines
           setTimeout(function(){ that.addLine(); });
           return;
         }
 
         setTimeout(function(){
+          // first figure out the content to use for each line
           that.contentLine = that.getContentLine();
+          // then start adding lines
           setTimeout(function(){
             that.addLine();
           });
