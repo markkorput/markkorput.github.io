@@ -154,9 +154,17 @@ $(document).ready(function(){
 
   // callback method used by the router to load a specific page
   scope.showPage = function(pageName){
-    $('.page').hide();
-    $('.page#page-'+pageName).show();
-    // console.log('loaded page: ' + pageName);
+    var template_el = $('template.page#'+pageName);
+    var content = ''
+
+    if(template_el.length > 0){
+      // console.log('found template');
+      content = template_el.html();
+    }
+
+    var page_el = $('div.page');
+    page_el.html(content);
+    page_el.show();
 
     var backdropper = scope.newBackdropper({txt: pageName});
     backdropper.start();
