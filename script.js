@@ -17,7 +17,7 @@ $(document).ready(function(){
         this.txt = options.txt;
         this.el = options.el || $('#backdrop');
         this.lineCap = options.lineCap || 100;
-        this.lineDelay = options.lineDelay || 10;
+        this.lineDelay = options.lineDelay || 5;
         this.lineCount = 0;
       },
 
@@ -28,7 +28,7 @@ $(document).ready(function(){
         // never allows this element to reach greater width than the document element)
         this.el.addClass('calibrating');
 
-        var highlight = Math.floor(Math.random() * 10);
+        var highlight = 2 + Math.floor(Math.random() * 7);
         var cap = 100;
         for(var i=0; i<cap; i++){
           // this enough?
@@ -43,7 +43,7 @@ $(document).ready(function(){
           }
 
           // add a piece of content
-          if(i == highlight){
+          if((i % highlight) == 0){
             this.el.append('<span class="highlight">'+this.txt+'</span>');
           } else {
             this.el.append(this.txt);
