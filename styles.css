@@ -15,7 +15,7 @@ a:hover{ text-decoration: underline; }
 .page iframe.youtube{ display: block; width: 600px; height: 337px; }
 .page iframe.youtube.small{ display: inline-block; width: 187px; height: 105px; }
 
-.page#page-shortnotion{ background-color:transparent; }
+.page.shortnotion{ background-color:transparent; }
 
 #backdrop{ position: fixed; top: -10px; left: -5px; display: block; padding:0; margin:0; font-family: monospace; z-index: -1; color: #EEE; font-size: 14px; word-break: break-word}
 #backdrop.calibrating{ word-break: normal; }

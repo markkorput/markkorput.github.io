@@ -163,6 +163,7 @@ $(document).ready(function(){
     }
 
     var page_el = $('div.page');
+    page_el.prop('class', 'page ' + pageName)
     page_el.html(content);
     page_el.show();
 
