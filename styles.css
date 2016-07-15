@@ -1,13 +1,18 @@
-body { font-family: Helvetica, Arial, Sans-Serif; font-size: 14px; }
+body { font-family: Helvetica, Arial, Sans-Serif; font-size: 14px; padding-bottom: 50px; }
 a { color: black; text-decoration: none; margin-bottom: 2px; }
 a:hover{ text-decoration: underline; }
 
-#menu { position: fixed; top: 30px; left: 40px; line-height: 20px; background-color: rgba(255,255,255,0.9); padding: 10px; z-index:10;}
-#menu span.subtitle{ display: block; font-style: italic; margin-bottom: 10px; }
+#menu { position: fixed; top: 30px; left: 40px; line-height: 20px; background-color: rgba(255,255,255,0.9); padding: 15px; z-index:10; box-shadow: 5px 5px 3px rgba(0,0,0,0.05); }
+#menu span.subtitle{ margin-bottom: 10px; margin-left: 0px; display: block; font-style: italic; display: block; width: 135px; font-size: 12px; }
 #menu a{ display: block; font-size: 12px; }
+#menu img{ display: none; }
+#menu h1{ margin-top: 0; }
 
+#menu.version2 img{ display: block; width: 150px; margin: -10px 0 0 -10px; padding: 0; }
+#menu.version2 h1{ display: none; }
+#menu.version2 span.subtitle{ margin-left: 0px; }
 
-.page { display: none; margin:55px 0 0 250px; width: 600px; background-color: rgba(255,255,255,0.9); padding: 10px 20px; z-index:10;}
+.page { display: none; margin:30px 0 0 250px; width: 600px; background-color: rgba(255,255,255,0.9); padding: 10px 20px; z-index:10; box-shadow: 5px 5px 3px rgba(0,0,0,0.05); }
 .page p.details{ font-size: 12px; color: #666; }
 .page a{ display: block; font-weight: bold; }
 .page img,
@@ -15,7 +20,9 @@ a:hover{ text-decoration: underline; }
 .page iframe.youtube{ display: block; width: 600px; height: 337px; }
 .page iframe.youtube.small{ display: inline-block; width: 187px; height: 105px; }
 
-.page.shortnotion{ background-color:transparent; }
+.page.shortnotion{ background-color:transparent; box-shadow: none; }
+.page.contact img{ margin-bottom: 3px; }
+.page.contact span.credit{ display: block; width:100%; font-size: 8px; text-align: right; }
 
 #backdrop{ position: fixed; top: -10px; left: -5px; display: block; padding:0; margin:0; font-family: monospace; z-index: -1; color: #EEE; font-size: 14px; word-break: break-all; }
 #backdrop.calibrating{ word-break: normal; }

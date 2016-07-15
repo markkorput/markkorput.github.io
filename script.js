@@ -1,6 +1,5 @@
 // don't initialize this file's logic until the page is done (down-)loading.
 $(document).ready(function(){
-
   // check for existing instance of this file's logic
   if(window.shortnotion){
     console.log('shortnotion logic already loaded?!');
@@ -21,6 +20,9 @@ $(document).ready(function(){
         this.lineCount = 0;
       },
 
+      // determine the content of a single line by clearing the element,
+      // than adding this.txt until the element has become wide enough to
+      // fill the window
       getContentLine: function(){
         // clear
         this.el.html('');
@@ -28,7 +30,7 @@ $(document).ready(function(){
         // never allows this element to reach greater width than the document element)
         this.el.addClass('calibrating');
 
-        var highlight = 2 + Math.floor(Math.random() * 7);
+        var highlight = 1 + Math.floor(Math.random() * 10);
         var cap = 100;
         for(var i=0; i<cap; i++){
           // this enough?
@@ -58,6 +60,7 @@ $(document).ready(function(){
         return '';
       },
 
+      // clear element and schedule calls to fill it up with new content
       start: function(){
         var that = this;
 
@@ -80,14 +83,19 @@ $(document).ready(function(){
         });
       },
 
+      // returns a boolean, indicating if the element with the current content,
+      // has become wide enough to fill the window
       wideEnough: function(){
         return this.el.position().left + this.el.width() > $(document).width();
       },
 
+      // returns a boolean, indicating if the element with the current content,
+      // has become high enough to fill the window
       highEnough: function(){
         return this.el.position().top + this.el.height() > $(document).height();
       },
 
+      // adds a line of content to this.el and schedules the next call to addLine
       addLine: function(){
         // cap reached?
         if(this.lineCount > this.lineCap){
@@ -167,11 +175,20 @@ $(document).ready(function(){
     page_el.html(content);
     page_el.show();
 
-    var backdropper = scope.newBackdropper({txt: pageName});
-    backdropper.start();
+    scope.backdropper = scope.newBackdropper({txt: pageName});
+    scope.backdropper.start();
   }
 
-  // initialize instance of our router and start monitoring for address changes
+  // register keydown-handler
+  $(window).on('keydown', function(event){
+    // for debugging; press the slash key to toggle between styling versions
+    if(event.key == '/'){
+      // console.log('toggle version2');
+      $('#menu').toggleClass('version2');
+    }
+  });
+
+  // initialize instance of our router and start monitoring for address (anchor) changes
   scope.router = new scope.MarkRouter();
   // console.log('Backbone.history.start');
   Backbone.history.start({pushState: Backbone.history._hasPushState});
@@ -179,4 +196,3 @@ $(document).ready(function(){
   // store scope for global (window-wide) reference
   window.shortnotion = scope;
 });
-
