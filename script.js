@@ -69,18 +69,26 @@ $(document).ready(function(){
           // clear element
           this.el.html('');
           // start adding lines
-          setTimeout(function(){ that.addLine(); });
+          that.timeout = setTimeout(function(){ that.addLine(); });
           return;
         }
 
-        setTimeout(function(){
+        that.timeout = setTimeout(function(){
           // first figure out the content to use for each line
           that.contentLine = that.getContentLine();
           // then start adding lines
-          setTimeout(function(){
+          that.timeout = setTimeout(function(){
             that.addLine();
           });
         });
+      },
+
+      // stops any scheduled timeout
+      stop: function(){
+        if(this.timeout){
+          clearTimeout(this.timeout);
+          this.timeout = undefined;
+        }
       },
 
       // returns a boolean, indicating if the element with the current content,
@@ -114,7 +122,7 @@ $(document).ready(function(){
 
         // schedule next line
         var that = this;
-        setTimeout(function(){ that.addLine(); }, this.lineDelay);
+        this.timeout = setTimeout(function(){ that.addLine(); }, this.lineDelay);
       }
     };
 
@@ -174,6 +182,9 @@ $(document).ready(function(){
     page_el.prop('class', 'page ' + pageName)
     page_el.html(content);
     page_el.show();
+
+    if(scope.backdropper)
+      scope.backdropper.stop();
 
     scope.backdropper = scope.newBackdropper({txt: pageName});
     scope.backdropper.start();
