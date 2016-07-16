@@ -199,6 +199,14 @@ $(document).ready(function(){
     }
   });
 
+  $(window).on('resize', function(event){
+    if(scope.backdropper){
+      // in case the window got bigger; this will fill the background with more content,
+      // otherwise, nothing will happen
+      scope.backdropper.addLine();
+    }
+  });
+
   // initialize instance of our router and start monitoring for address (anchor) changes
   scope.router = new scope.MarkRouter();
   // console.log('Backbone.history.start');
