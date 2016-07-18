@@ -151,7 +151,7 @@ $(document).ready(function(){
 
       // Block anchors for hash-based history
       if (!Backbone.history._hasPushState) {
-        $('body').delegate('a[href^="#"]', 'click', function (e) {
+        $('body').on('click', 'a[href^="#"]', function (e) {
           e.preventDefault();
           that.navigate($(this).attr('href'), {trigger: true});
         });
@@ -205,6 +205,13 @@ $(document).ready(function(){
       // otherwise, nothing will happen
       scope.backdropper.addLine();
     }
+  });
+
+  $('div.page').on('click', '#showall', function(event){
+    event.preventDefault();
+    event.stopPropagation();
+    $('.page.backseatsessions #episodes').html($('template#backseatsessions-episodes').html());
+    $(this).hide();
   });
 
   // initialize instance of our router and start monitoring for address (anchor) changes
