@@ -17,6 +17,7 @@ $(document).ready(function(){
         this.el = options.el || $('#backdrop');
         this.lineCap = options.lineCap || 100;
         this.lineDelay = options.lineDelay || 5;
+        this.idleDelay = options.idleDelay || 3000;
         this.lineCount = 0;
       },
 
@@ -112,7 +113,12 @@ $(document).ready(function(){
         }
 
         // we're done
+        var that = this;
+
         if(this.highEnough()){
+          // on mobile devices often the background never gets filled up completely,
+          // so we'll just keep an idle (slow) timeout running to keep filling up
+          this.timeout = setTimeout(function(){ that.addLine(); }, this.idleDelay);
           return;
         }
 
@@ -121,7 +127,6 @@ $(document).ready(function(){
         this.lineCount++;
 
         // schedule next line
-        var that = this;
         this.timeout = setTimeout(function(){ that.addLine(); }, this.lineDelay);
       }
     };
