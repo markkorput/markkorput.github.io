@@ -157,6 +157,11 @@ $(document).ready(function(){
       // Block anchors for hash-based history
       if (!Backbone.history._hasPushState) {
         $('body').on('click', 'a[href^="#"]', function (e) {
+          if(e.metaKey || e.altKey || e.ctrlKey){
+            // just let browser's default key-specific behaviour kick-in
+            return;
+          }
+
           e.preventDefault();
           that.navigate($(this).attr('href'), {trigger: true});
         });
