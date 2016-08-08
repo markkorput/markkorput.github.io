@@ -14,6 +14,9 @@ a:hover{ text-decoration: underline; }
 #menu.version2 img{ display: block; width: 150px; margin: -10px 0 0 -10px; padding: 0; }
 #menu.version2 h1{ display: none; }
 #menu.version2 span.subtitle{ margin-left: 0px; }
+#menu.version2 span.subtitle:nth-of-type(2){margin-bottom: 0; margin-left: 10px;}
+#menu.version2 span.subtitle:nth-of-type(3){margin-left: 20px; margin-bottom: 20px;}
+
 
 #menu a.icon{ display: inline-block; }
 #menu a.icon img{ display: block; width:16px; margin:0; }
