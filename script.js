@@ -53,7 +53,7 @@ $(document).ready(function(){
           }
         }
 
-        console.log('backdrop line content cap reached');
+        // console.log('backdrop line content cap reached');
         // reset element
         this.el.html('');
         this.el.removeClass('calibrating');
@@ -108,7 +108,7 @@ $(document).ready(function(){
       addLine: function(){
         // cap reached?
         if(this.lineCount > this.lineCap){
-          console.log('addLineCap reached');
+          // console.log('addLineCap reached');
           return;
         }
 
