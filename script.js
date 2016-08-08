@@ -1,7 +1,7 @@
 // don't initialize this file's logic until the page is done (down-)loading.
 $(document).ready(function(){
   // check for existing instance of this file's logic
-  if(window.shortnotion){
+  if(window.shortnotionjs){
     console.log('shortnotion logic already loaded?!');
     return;
   }
@@ -53,7 +53,7 @@ $(document).ready(function(){
           }
         }
 
-        console.log('backdrop line content cap reached');
+        // console.log('backdrop line content cap reached');
         // reset element
         this.el.html('');
         this.el.removeClass('calibrating');
@@ -108,7 +108,7 @@ $(document).ready(function(){
       addLine: function(){
         // cap reached?
         if(this.lineCount > this.lineCap){
-          console.log('addLineCap reached');
+          // console.log('addLineCap reached');
           return;
         }
 
@@ -170,6 +170,7 @@ $(document).ready(function(){
 
     home: function(){
       scope.showPage('shortnotion');
+      scope.loadShortcuts();
     },
 
     page: function(pageName){
@@ -198,7 +199,92 @@ $(document).ready(function(){
 
     scope.backdropper = scope.newBackdropper({txt: pageName});
     scope.backdropper.start();
-  }
+  };
+
+  scope.loadShortcutFromImageElement = function(img_el, page_id){
+      // create link element
+      var link_el = jQuery('<a class="shortcut" href="#page/'+page_id+'">');
+      // add image to link element
+      link_el.append(img_el);
+      // add link element to page
+      $('div.page').append(link_el);
+
+      // when the image is loaded, calculate its height
+      // (with all the page's css styling) applied to it
+      // and vertically apply random margin
+      img_el.on('load', function(event){
+        // console.log('image size: ', this.width, this.height);
+        var overflow = this.height - link_el.height();
+        var margin = Math.floor(Math.random() * overflow);
+        img_el.css({'margin-top': -margin+'px'});
+      });
+  };
+
+  scope.loadShortcutFromVideoElement = function(el, page_id, options){
+      // create link element
+      var link_el = jQuery('<a class="shortcut" href="#page/'+page_id+'">');
+
+      // customize; no small classes, only regular size
+      el.removeClass('small');
+      // don't show controls
+      if(options.youtube)
+        el.prop('src', el.prop('src') + '&showinfo=0&disablekb=1&controls=0');
+      // add image to link element
+      link_el.append('<span class="overlay">&nbsp;</span>');
+      link_el.append(el);
+      // add link element to page
+      $('div.page').append(link_el);
+      
+
+      // no that the element is added to the page and all css styling is appliead
+      // calculate vertical overflow and apply random vertical margin
+      var overflow = el.height() - link_el.height();
+      var margin = Math.floor(Math.random() * overflow);
+      el.css({'margin-top': -margin+'px'});
+
+      // el.on('load', function(event){
+      //   console.log('loaded!', event.target);
+      // });
+  };
+
+  scope.loadShortcuts = function(){
+    var imgs = $('body template.page').each(function(idx, page_el){
+      // create temporary div to hold the current template's content
+      // (jQuery doesn't support searching inside template elements' bodies)
+      var tmpdiv = jQuery('<div></div>');
+      // move template's content into temporary div
+      tmpdiv.html(jQuery(page_el).html());
+      // find image elements
+      var els = tmpdiv.find('img');
+      // if we found any images
+      if(els.length > 0){
+        // pick a random image
+        var el = jQuery(els[Math.floor(Math.random()*els.length)]);
+        // create a shortcut from it
+        scope.loadShortcutFromImageElement(el, page_el.id);
+        // done
+        return;
+      }
+
+      // try youtube iframe elements instead of image elements
+      /*els = tmpdiv.find('iframe.youtube');
+      if(els.length > 0){
+        // pick a random iframe element
+        var el = jQuery(els[Math.floor(Math.random()*els.length)]);
+        scope.loadShortcutFromVideoElement(els, page_el.id, {youtube: true});
+        return;
+      }*/
+
+      // try vimeo iframe elements instead of image elements
+      els = tmpdiv.find('iframe.vimeo');
+      if(els.length > 0){
+        // pick a random iframe element
+        var el = jQuery(els[Math.floor(Math.random()*els.length)]);
+        scope.loadShortcutFromVideoElement(el, page_el.id, {youtube: false});
+        return;
+      }
+    });
+  };
 
   // register keydown-handler
   $(window).on('keydown', function(event){
@@ -230,5 +316,5 @@ $(document).ready(function(){
   Backbone.history.start({pushState: Backbone.history._hasPushState});
 
   // store scope for global (window-wide) reference
-  window.shortnotion = scope;
+  window.shortnotionjs = scope;
 });
