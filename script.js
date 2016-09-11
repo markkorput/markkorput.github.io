@@ -199,6 +199,11 @@ $(document).ready(function(){
 
     scope.backdropper = scope.newBackdropper({txt: pageName});
     scope.backdropper.start();
+
+    // because this is a single page app, we'll manually send a pageview
+    // to google analytics every time a new 'page' is shown
+    ga('set', 'page', '/'+window.location['hash']);
+    ga('send', 'pageview');
   };
 
   scope.loadShortcutFromImageElement = function(img_el, page_id){
