@@ -19,6 +19,8 @@ $(document).ready(function(){
         this.lineDelay = options.lineDelay || 5;
         this.idleDelay = options.idleDelay || 3000;
         this.lineCount = 0;
+        this.desiredWidth = $(document).width() - this.el.position().left;
+        this.desiredHeight = ($(document).height() - this.el.position().top) + 100; // + 100 for mobile
       },
 
       // determine the content of a single line by clearing the element,
@@ -95,13 +97,13 @@ $(document).ready(function(){
       // returns a boolean, indicating if the element with the current content,
       // has become wide enough to fill the window
       wideEnough: function(){
-        return this.el.position().left + this.el.width() > $(document).width();
+        return this.el.width() >= this.desiredWidth;
       },
 
       // returns a boolean, indicating if the element with the current content,
       // has become high enough to fill the window
       highEnough: function(){
-        return this.el.position().top + this.el.height() > $(document).height();
+        return this.el.height() >= this.desiredHeight;
       },
 
       // adds a line of content to this.el and schedules the next call to addLine
@@ -239,7 +241,7 @@ $(document).ready(function(){
       link_el.append(el);
       // add link element to page
       $('div.page').append(link_el);
-      
+
 
       // no that the element is added to the page and all css styling is appliead
       // calculate vertical overflow and apply random vertical margin
