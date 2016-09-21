@@ -20,7 +20,7 @@ $(document).ready(function(){
         this.idleDelay = options.idleDelay || 3000;
         this.lineCount = 0;
         this.desiredWidth = $(document).width() - this.el.position().left;
-        this.desiredHeight = ($(document).height() - this.el.position().top) + 100; // + 100 for mobile
+        this.desiredHeight = ($(document).height() - this.el.position().top) * 1.5; // + 100 for mobile
       },
 
       // determine the content of a single line by clearing the element,
