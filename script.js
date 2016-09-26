@@ -181,6 +181,15 @@ $(document).ready(function(){
     }
   });
 
+  scope.loadGoogleAnalytics = function(){
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    window['ga']('create', 'UA-84011707-1', 'auto');
+  };
+
   // callback method used by the router to load a specific page
   scope.showPage = function(pageName){
     var template_el = $('template.page#'+pageName);
@@ -204,8 +213,11 @@ $(document).ready(function(){
 
     // because this is a single page app, we'll manually send a pageview
     // to google analytics every time a new 'page' is shown
-    ga('set', 'page', '/'+window.location['hash']);
-    ga('send', 'pageview');
+    if(!window['ga']){
+      this.loadGoogleAnalytics();
+    }
+    window['ga']('set', 'page', '/'+window.location['hash']);
+    window['ga']('send', 'pageview');
   };
 
   scope.loadShortcutFromImageElement = function(img_el, page_id){
