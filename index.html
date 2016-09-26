@@ -18,7 +18,7 @@
       #menu span.subtitle{ margin:0; margin-left: 0px; display: block; font-style: italic; display: block; width: 135px; font-size: 12px; }
       #menu span.subtitle:nth-of-type(2){margin-bottom: 0; margin-left: 10px;}
       #menu span.subtitle:nth-of-type(3){margin-left: 20px; margin-bottom: 20px;}
-      #menu a{ display: block; font-size: 12px; }
+      #menu a{ display: block; font-size: 12px; max-width: 150px; }
       #menu a.header{ font-size: 14px; text-decoration: none; }
       #menu img{ display: none; }
       #menu h1{ margin-top: 0; }
@@ -38,7 +38,8 @@
 
       .page { display: none; margin:30px 0 0 250px; width: 600px; padding: 10px 20px; z-index:10; background-color: rgba(255,255,255,0.9); box-shadow: 5px 5px 3px rgba(0,0,0,0.05); }
       .page p.details{ font-size: 12px; color: #666; }
-      .page a{ display: block; font-weight: bold; }
+      .page a{ font-weight: bold; }
+      .page p.links a{ display: block; }
       .page img,
       .page iframe { display: block; width: 100%; margin:0 0 20px 0}
       .page iframe.vimeo{ display: block; width: 600px; height: 337px; }
@@ -80,6 +81,7 @@
       <span class="subtitle">mark van de korput</span>
       <span class="subtitle">new media developer</span>
       <span class="subtitle">based in Amsterdam</span>
+
       <a href="#page/contact">contact</a>
       <a class="icon" href="https://github.com/markkorput" target="_blank">
         <img src="images/icon-github.png" alt="github" title="github" />
@@ -87,7 +89,9 @@
       <a class="icon" href="https://nl.linkedin.com/in/mark-van-de-korput-51038619" target="_blank">
         <img src="images/icon-linkedin.png" alt="linkedin" title="linkedin" />
       </a>
+
       <a href="#" class="header"><h4>work</h4></a>
+      <a href="#page/ntr-libris">NTR Libris Geschiedenis Prijs Shortlist 2016</a>
       <a href="#page/hallofheroes">Hall of Heroes</a>
       <a href="#page/whitespots">White Spots</a>
       <a href="#page/2030">2030</a>
@@ -120,7 +124,7 @@
     <template class="page" id="hallofheroes">
       <h1>Hall of Heroes</h1>
       <p>2016</p>
-      <p>
+      <p class="links">
         <a href="http://www.afgefackt.com/#!hall-of-heroes/egy2n" target="_blank">www.afgefackt.com</a>
         <a href="http://overhetij.nl/programma/voorstelling/?id=64" target="_blank">www.overhetij.nl</a>
       </p>
@@ -135,10 +139,6 @@
       <img src="images/hoh-05.jpg" />
       <img src="images/hoh-flyer1.png" title="Hall of Heroes flyer front" />
       <!-- <img src="images/hoh-flyer2.png" title="Hall of Heroes flyer back" /> -->
-    </template>
-
-    <template class="page" id="comingsoon">
-      <h1>coming soon</h1>
     </template>
 
     <template class="page" id="2030">
@@ -159,7 +159,9 @@
     <template class="page" id="whitespots">
       <h1>White Spots</h1>
       <p>2016</p>
-      <p><a href="http://www.vpro.nl/over-de-vpro/white-spots.html" target="_blank">www.vpro.nl/over-de-vpro/white-spots.html</a></p>
+      <p class="links">
+        <a href="http://www.vpro.nl/over-de-vpro/white-spots.html" target="_blank">www.vpro.nl/over-de-vpro/white-spots.html</a>
+      </p>
       <p>White Spots is a multimedia project by the VPRO. Through various media (television documentary, a meetup, an app and VR-video) it unfolds the story of how global connectivity is affecting our lives.</p>
       <p class="details">crew: Bregtje van der Haak, Richard Vijgen, Mariska Schneider, Mark van de Korput, Sam Huisman, Henk Spook.</p>
       <p class="details">my role: VR-camera and post-production.</p>
@@ -174,10 +176,12 @@
       <img src="images/whitespots-process2.jpg" title="White Spots Behind the Scenes" />
     </template>
 
-    <template class="page" id="peepshow" data-name="VPRO Peepshow" data-year="2015" data-tags="VR, Virtual Reality, Theatre, 360 Video, Editing, Compositing, Stitching, Kolor Autopano, GoPro">
+    <template class="page" id="peepshow" data-name="VPRO Peepshow">
       <h1>VPRO Peepshow</h1>
       <p>2015</p>
-      <p><a href="http://www.vpro.nl/medialab/nieuws/De-Peepshow.html" target="_blank">www.vpro.nl/peepshow</a></p>
+      <p class="links">
+        <a href="http://www.vpro.nl/medialab/nieuws/De-Peepshow.html" target="_blank">www.vpro.nl/peepshow</a>
+      </p>
       <p>A cross-media experience involving live theatre and virtual reality. Performed in 2015 on Lowlands festival and the Dutch Design Week.</p>
       <p class="details">crew: Ivo van Aart, Mirjam van Dijk, Steye Hallema, Mark van de Korput, Ridwan Nasruddin, Elénie Wagner, Boris van Bommel, Jilles Flinterman, Anna Keuning, Nicole Cremers, Robin van Dijk, Henk van Engelen, Mariska Schneider, Arjen Jongeneel, Brecht van Teeseling<p>
       <p class="details">my role: R&amp;D, VR-video production, data handling and technical supervision</p>
@@ -193,7 +197,9 @@
     <template class="page" id="localprojects">
       <h1>Local Projects</h1>
       <p>2014 - 2015</p>
-      <p><a href="http://www.localprojects.com/project/cooper-hewitt-smithsonian-design-museum/" target="_blank">www.localprojects.com</a></p>
+      <p class="links">
+        <a href="http://www.localprojects.com/project/cooper-hewitt-smithsonian-design-museum/" target="_blank">www.localprojects.com</a>
+      </p>
       <p>As development & UX design intern at Local Projects I worked on the interactives that are part of the permanent re-opening exhibition of the Cooper Hewitt Smithsonian Design Museum in New York.</p>
       <p class="details">crew: Jake Barton, Sundar Raman, Orio Ferrer Mesià, Kristen Svorka, Angela Chen, Philipp Rockel, Mark van de Korput, Kimberly Gim, Paul Hoppe<p>
       <p class="details">my role: software development, interaction design</p>
@@ -204,7 +210,9 @@
     <template class="page" id="justlikeyourmom">
       <h1>Just Like Your Mom</h1>
       <p>2015</p>
-      <p><a href="http://www.justlikeyourmom.com" target="_blank">www.justlikeyourmom.com</a></p>
+      <p class="links">
+        <a href="http://www.justlikeyourmom.com" target="_blank">www.justlikeyourmom.com</a>
+      </p>
       <p>Promo video / after movie for Just Like Your Mom vegan catering and toursupport</p>
       <p class="details">crew: Mark van de Korput, Rene Huwae<p>
       <p class="details">my role: direction, camera, editing</p>
@@ -215,7 +223,7 @@
     <template class="page" id="wohnzimmertour">
       <h1>Tim Vantol Wohnzimmer Tour</h1>
       <p>2014</p>
-      <p><a href="http://www.timvantol.com" target="_blank">www.timvantol.com</a></p>
+      <p class="links"><a href="http://www.timvantol.com" target="_blank">www.timvantol.com</a></p>
       <p>Mini tour-documentary series following Tim, Justin and Sjors as they hitch-hike their way through southern Germany, playing acoustic living room shows.</p>
       <p class="details">crew: Mark van de Korput, Tim van Tol, Justin Ghijsen, Sjors van Reeuwijk, Maurits de Vries</p>
       <p class="details">my role: direction, camera, editing, post-production</p>
@@ -241,7 +249,7 @@
     <template class="page" id="backseatsessions">
       <h1>BackSeat Sessions</h1>
       <p>2011 - present</p>
-      <p><a href="https://www.facebook.com/backseatsessions" target="_blank">www.facebook.com/backseatsessions</a></p>
+      <p class="links"><a href="https://www.facebook.com/backseatsessions" target="_blank">www.facebook.com/backseatsessions</a></p>
       <p>On-going personal side-project featuring bands, acoustic guitars and moving vehicles.</p>
       <p class="details">crew: Mark van de Korput and friends<p>
       <p class="details">tools: DSLR, Zoom, Lapel Mics, Adobe Suite and gallons of gasoline</p>
@@ -255,6 +263,30 @@
       <p><a id="showall" href="#">show all (39) episodes</a></p>
       <p><a href="https://www.youtube.com/playlist?list=PL132C4090C6505F93" target="_blank">go to the Youtube playlist</a></p>
     </template>
+
+    <template class="page" id="ntr-libris">
+      <h1>NTR Libris Geschiedenis Prijs 2016</h1>
+      <p>2016</p>
+      <p class="links">
+        <a href="http://www.npo.nl/shortlist-libris-geschiedenis-prijs-2016/17-09-2016/WO_NTR_5128864" target="_blank">video of nominee Machiel Bosman</a>
+        <a href="http://www.npo.nl/shortlist-libris-geschiedenis-prijs-2016/17-09-2016/WO_NTR_5128868" target="_blank">video of nominee Annejet van der Zijl</a>
+        <a href="http://www.npo.nl/shortlist-libris-geschiedenis-prijs-2016/17-09-2016/WO_NTR_5128865" target="_blank">video of nominee Philip Dröge</a>
+        <a href="http://www.npo.nl/shortlist-libris-geschiedenis-prijs-2016/17-09-2016/WO_NTR_5128867" target="_blank">video of nominee Lodewijk Petram</a>
+        <a href="http://www.npo.nl/shortlist-libris-geschiedenis-prijs-2016/17-09-2016/WO_NTR_5128866" target="_blank">video of nominee Elisabeth Leijnse</a>
+      </p>
+      <p>
+        Director <a href="http://www.ivovanaart.com/" target="_blank">Ivo van Aart</a>
+        asked me to help spice up the introduction videos for the nominees of the
+        <a href="https://www.libris.nl/non-fictie/libris-geschiedenis-prijs/" target="_blank">Libris Geschiedenis Prijs 2016</a>
+        (a price for writers of non-fictional history books).
+        Together with <a href="http://www.mirjamvandijk.com/" target="_blank">Mirjam van Dijk</a>
+        I created a stage of plexiglas frames, projections and smoke that would float around the writers
+        like thoughts and memories while they explain what their books are about.
+      </p>
+      <p class="details">crew: Ivo van Aart, Thomas van der Gronde, Mirjam van Dijk, Mark van de Korput</p>
+      <p class="details">my role: stage design, projection & smoke technician</p>
+      <p class="details">tools: RaspberryPI, python, OSC, Midi</p>
+    </div>
 
     <template id="backseatsessions-episodes">
       <iframe class="youtube small" src="https://www.youtube.com/embed/Zdi1FbRedwE?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
