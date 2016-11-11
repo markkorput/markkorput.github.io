@@ -39,7 +39,6 @@ function waitFor(testFx, onReady, timeOutMillis) {
         }, 100); //< repeat check every 100ms
 };
 
-
 if (system.args.length !== 2) {
     console.log('Usage: run-jasmine2.js URL');
     phantom.exit(1);
@@ -52,46 +51,49 @@ page.onConsoleMessage = function(msg) {
     console.log(msg);
 };
 
+console.log("Loading '"+system.args[1]+"'...")
 page.open(system.args[1], function(status){
     if (status !== "success") {
         console.log("Unable to access network");
         phantom.exit();
-    } else {
-        waitFor(function(){
-            return page.evaluate(function(){
-                return (document.body.querySelector('.jasmine-symbol-summary .jasmine-pending') === null &&
-                        document.body.querySelector('.jasmine-duration') !== null);
-            });
-        }, function(){
-            var exitCode = page.evaluate(function(){
-                console.log('');
-
-                var title = 'Jasmine';
-                var version = document.body.querySelector('.jasmine-version').innerText;
-                var duration = document.body.querySelector('.jasmine-duration').innerText;
-                var banner = title + ' ' + version + ' ' + duration;
-                console.log(banner);
-
-                var list = document.body.querySelectorAll('.jasmine-results > .jasmine-failures > .jasmine-spec-detail.jasmine-failed');
-                if (list && list.length > 0) {
-                    console.log('');
-                    console.log(list.length + ' test(s) FAILED:');
-                    for (i = 0; i < list.length; ++i) {
-                        var el = list[i],
-                            desc = el.querySelector('.jasmine-description'),
-                            msg = el.querySelector('.jasmine-messages > .jasmine-result-message');
-                        console.log('');
-                        console.log(desc.innerText);
-                        console.log(msg.innerText);
-                        console.log('');
-                    }
-                    return 1;
-                } else {
-                    console.log(document.body.querySelector('.jasmine-alert > .jasmine-bar.jasmine-passed,.jasmine-alert > .jasmine-bar.jasmine-skipped').innerText);
-                    return 0;
-                }
-            });
-            phantom.exit(exitCode);
-        });
+        return;
     }
+
+    console.log("Waiting for Jasmine test-suite to run...");
+    waitFor(function(){
+        return page.evaluate(function(){
+            return (document.body.querySelector('.jasmine-symbol-summary .jasmine-pending') === null &&
+                    document.body.querySelector('.jasmine-duration') !== null);
+        });
+    }, function(){
+        var exitCode = page.evaluate(function(){
+            console.log('');
+
+            var title = 'Jasmine';
+            var version = document.body.querySelector('.jasmine-version').innerText;
+            var duration = document.body.querySelector('.jasmine-duration').innerText;
+            var banner = title + ' ' + version + ' ' + duration;
+            console.log(banner);
+
+            var list = document.body.querySelectorAll('.jasmine-results > .jasmine-failures > .jasmine-spec-detail.jasmine-failed');
+            if (list && list.length > 0) {
+                console.log('');
+                console.log(list.length + ' test(s) FAILED:');
+                for (i = 0; i < list.length; ++i) {
+                    var el = list[i],
+                        desc = el.querySelector('.jasmine-description'),
+                        msg = el.querySelector('.jasmine-messages > .jasmine-result-message');
+                    console.log('');
+                    console.log(desc.innerText);
+                    console.log(msg.innerText);
+                    console.log('');
+                }
+                return 1;
+            } else {
+                console.log(document.body.querySelector('.jasmine-alert > .jasmine-bar.jasmine-passed,.jasmine-alert > .jasmine-bar.jasmine-skipped').innerText);
+                return 0;
+            }
+        });
+        phantom.exit(exitCode);
+    });
 });
