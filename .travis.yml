@@ -1,2 +1,2 @@
 # command to run tests
-script: "phantomjs tests/runPhantomJsJasmineTests.js http://markkorput.github.io
+script: phantomjs tests/runPhantomJsJasmineTests.js http://markkorput.github.io
