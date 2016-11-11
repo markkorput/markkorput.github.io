@@ -14,29 +14,37 @@ var system = require('system');
  * @param onReady what to do when testFx condition is fulfilled,
  * it can be passed in as a string (e.g.: "1 == 1" or "$('#bar').is(':visible')" or
  * as a callback function.
- * @param timeOutMillis the max amount of time to wait. If not specified, 3 sec is used.
+ * @param options object with custom behaviour attributes
  */
-function waitFor(testFx, onReady, timeOutMillis) {
-    var maxtimeOutMillis = timeOutMillis ? timeOutMillis : 3001, //< Default Max Timeout is 3s
-        start = new Date().getTime(),
-        condition = false,
-        interval = setInterval(function() {
-            if ( (new Date().getTime() - start < maxtimeOutMillis) && !condition ) {
-                // If not time-out yet and condition not yet fulfilled
-                condition = (typeof(testFx) === "string" ? eval(testFx) : testFx()); //< defensive code
-            } else {
-                if(!condition) {
+function waitFor(testFx, onReady, options) {
+    if(!options) options = {};
+    if(!options.timeOutMillis) options.timeOutMillis = 3001; //< Default Max Timeout is 3s
+
+    var start = new Date().getTime(),
+        condition = false;
+
+    var interval = setInterval(function() {
+        if ( (new Date().getTime() - start < options.timeOutMillis) && !condition ) {
+            // If not time-out yet and condition not yet fulfilled
+            condition = (typeof(testFx) === "string" ? eval(testFx) : testFx()); //< defensive code
+        } else {
+            if(!condition) {
+                if(options.onTimeOut){
+                    typeof(options.onTimeOut) === "string" ? eval(options.onTimeOut) : options.onTimeOut();
+                } else {
                     // If condition still not fulfilled (timeout but condition is 'false')
                     console.log("'waitFor()' timeout");
-                    phantom.exit(1);
-                } else {
-                    // Condition fulfilled (timeout and/or condition is 'true')
-                    console.log("'waitFor()' finished in " + (new Date().getTime() - start) + "ms.");
-                    typeof(onReady) === "string" ? eval(onReady) : onReady(); //< Do what it's supposed to do once the condition is fulfilled
-                    clearInterval(interval); //< Stop this interval
                 }
+
+                phantom.exit(1);
+            } else {
+                // Condition fulfilled (timeout and/or condition is 'true')
+                console.log("'waitFor()' finished in " + (new Date().getTime() - start) + "ms.");
+                typeof(onReady) === "string" ? eval(onReady) : onReady(); //< Do what it's supposed to do once the condition is fulfilled
+                clearInterval(interval); //< Stop this interval
             }
-        }, 100); //< repeat check every 100ms
+        }
+    }, 100); //< repeat check every 100ms
 };
 
 if (system.args.length !== 2) {
@@ -59,7 +67,12 @@ page.open(system.args[1], function(status){
         return;
     }
 
-    console.log("Waiting for Jasmine test-suite to run...");
+    console.log("injecting Jasmine test-suite into the page");
+    page.injectJs('js/jasmine-2.5.2/jasmine.js')
+    page.injectJs('js/jasmine-2.5.2/jasmine-html.js')
+    page.injectJs('js/jasmine-2.5.2/boot.js')
+
+    console.log("Waiting for Jasmine test-suite to finish...");
     waitFor(function(){
         return page.evaluate(function(){
             return (document.body.querySelector('.jasmine-symbol-summary .jasmine-pending') === null &&
@@ -95,5 +108,13 @@ page.open(system.args[1], function(status){
             }
         });
         phantom.exit(exitCode);
+    },
+    {
+      onTimeOut: function(){
+        console.log("Timeout.");
+        console.log("Jasmine test-suite either taks too long to complete, or was never injected properly.");
+        // page.render('timeout.png');
+      },
+      timeOutMillis: 8001
     });
 });
