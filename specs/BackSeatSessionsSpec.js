@@ -1,8 +1,4 @@
 describe("BackSeatSessions page", function() {
-  // it("should have a page source template", function() {
-  //   expect($('template.page#backseatsessions').length).toBe(1);
-  // });
-
   it("should have a link in the main menu", function(){
     $('#menu a:contains("Backseat Sessions")').click();
     expect($('.page h1:visible').text()).toBe('BackSeat Sessions');
