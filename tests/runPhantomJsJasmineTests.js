@@ -47,12 +47,14 @@ function waitFor(testFx, onReady, options) {
     }, 100); //< repeat check every 100ms
 };
 
-if (system.args.length !== 2) {
-    console.log('Usage: run-jasmine2.js URL');
+if (system.args.length < 2) {
+    console.log('Usage: runPhantomJsJasmineTests.js URL [timeout=8001]');
     phantom.exit(1);
 }
 
+var jasmineTimeout = system.args.length >= 3 ? system.args[2] : 8001;
 var page = require('webpage').create();
+
 
 // Route "console.log()" calls from within the Page context to the main Phantom context (i.e. current "this")
 page.onConsoleMessage = function(msg) {
@@ -67,10 +69,13 @@ page.open(system.args[1], function(status){
         return;
     }
 
-    console.log("injecting Jasmine test-suite into the page");
+    console.log("Injecting Jasmine core code...");
     page.injectJs('js/jasmine-2.5.2/jasmine.js')
     page.injectJs('js/jasmine-2.5.2/jasmine-html.js')
     page.injectJs('js/jasmine-2.5.2/boot.js')
+
+    console.log("Injecting specs...");
+    page.injectJs('specs/BackSeatSessionsSpec.js');
 
     console.log("Waiting for Jasmine test-suite to finish...");
     waitFor(function(){
@@ -111,10 +116,10 @@ page.open(system.args[1], function(status){
     },
     {
       onTimeOut: function(){
-        console.log("Timeout.");
+        console.log("Timeout");
         console.log("Jasmine test-suite either taks too long to complete, or was never injected properly.");
         // page.render('timeout.png');
       },
-      timeOutMillis: 8001
+      timeOutMillis: jasmineTimeout
     });
 });
