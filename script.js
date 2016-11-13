@@ -220,6 +220,8 @@ $(document).ready(function(){
     window['ga']('send', 'pageview');
   };
 
+  // SHORTCUTS // // //
+
   scope.loadShortcutFromImageElement = function(img_el, page_id){
       // create link element
       var link_el = jQuery('<a class="shortcut" href="#page/'+page_id+'">');
@@ -305,6 +307,8 @@ $(document).ready(function(){
     });
   };
 
+  // CALLBACKS // // //
+
   // register keydown-handler
   $(window).on('keydown', function(event){
     // for debugging; press the slash key to toggle between styling versions
@@ -322,12 +326,7 @@ $(document).ready(function(){
     }
   });
 
-  $('div.page').on('click', '#showall', function(event){
-    event.preventDefault();
-    event.stopPropagation();
-    $('.page.backseatsessions #episodes').html($('template#backseatsessions-episodes').html());
-    $(this).hide();
-  });
+  // GLOBALS // // //
 
   // initialize instance of our router and start monitoring for address (anchor) changes
   scope.router = new scope.MarkRouter();
