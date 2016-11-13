@@ -222,13 +222,11 @@ $(document).ready(function(){
 
   // SHORTCUTS // // //
 
-  scope.loadShortcutFromImageElement = function(img_el, page_id){
+  scope.shortcutFromImageElement = function(img_el, page_id){
       // create link element
       var link_el = jQuery('<a class="shortcut" href="#page/'+page_id+'">');
       // add image to link element
       link_el.append(img_el);
-      // add link element to page
-      $('div.page').append(link_el);
 
       // when the image is loaded, calculate its height
       // (with all the page's css styling) applied to it
@@ -239,9 +237,11 @@ $(document).ready(function(){
         var margin = Math.floor(Math.random() * overflow);
         img_el.css({'margin-top': -margin+'px'});
       });
+
+      return link_el;
   };
 
-  scope.loadShortcutFromVideoElement = function(el, page_id, options){
+  scope.shortcutFromVideoElement = function(el, page_id, options){
       // create link element
       var link_el = jQuery('<a class="shortcut" href="#page/'+page_id+'">');
 
@@ -253,9 +253,6 @@ $(document).ready(function(){
       // add image to link element
       link_el.append('<span class="overlay">&nbsp;</span>');
       link_el.append(el);
-      // add link element to page
-      $('div.page').append(link_el);
-
 
       // no that the element is added to the page and all css styling is appliead
       // calculate vertical overflow and apply random vertical margin
@@ -266,10 +263,14 @@ $(document).ready(function(){
       // el.on('load', function(event){
       //   console.log('loaded!', event.target);
       // });
+
+      return link_el;
   };
 
-  scope.loadShortcuts = function(){
-    var imgs = $('body template.page').each(function(idx, page_el){
+  scope.getShortcuts = function(){
+    var shortcuts = [];
+
+    $('body template.page').each(function(idx, page_el){
       // create temporary div to hold the current template's content
       // (jQuery doesn't support searching inside template elements' bodies)
       var tmpdiv = jQuery('<div></div>');
@@ -282,7 +283,9 @@ $(document).ready(function(){
         // pick a random image
         var el = jQuery(els[Math.floor(Math.random()*els.length)]);
         // create a shortcut from it
-        scope.loadShortcutFromImageElement(el, page_el.id);
+        var shortcut = scope.shortcutFromImageElement(el, page_el.id);
+        // collect it
+        shortcuts.push(shortcut);
         // done
         return;
       }
@@ -301,12 +304,26 @@ $(document).ready(function(){
       if(els.length > 0){
         // pick a random iframe element
         var el = jQuery(els[Math.floor(Math.random()*els.length)]);
-        scope.loadShortcutFromVideoElement(el, page_el.id, {youtube: false});
+        var shortcut = scope.shortcutFromVideoElement(el, page_el.id, {youtube: false});
+        shortcuts.push(shortcut);
         return;
       }
     });
+
+    return shortcuts;
   };
 
+  scope.loadShortcuts = function(){
+    var shortcuts = scope.getShortcuts();
+    var page = $('div.page');
+
+    // add all shortcuts to the main page in random order
+    while(shortcuts.length > 0){
+      var idx = Math.floor(Math.random() * shortcuts.length);
+      page.append(shortcuts[idx]);
+      shortcuts.splice(idx, 1);
+    }
+  }
   // CALLBACKS // // //
 
   // register keydown-handler
