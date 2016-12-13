@@ -323,7 +323,20 @@ $(document).ready(function(){
       page.append(shortcuts[idx]);
       shortcuts.splice(idx, 1);
     }
+
+    $('div.page a.shortcut').hover(function(evt){
+      var menu_items = $('#menu a[href="'+$(evt.currentTarget).attr('href')+'"]');
+
+      menu_items.each(function(idx, item){
+          if(evt.type == 'mouseenter'){
+            $(item).addClass('highlight');
+          } else if(evt.type == 'mouseleave'){
+            $(item).removeClass('highlight');
+          }
+      });
+    });
   }
+
   // CALLBACKS // // //
 
   // register keydown-handler
