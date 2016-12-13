@@ -324,6 +324,7 @@ $(document).ready(function(){
       shortcuts.splice(idx, 1);
     }
 
+    // hover callback on shortcuts to highlight matching menu item
     $('div.page a.shortcut').hover(function(evt){
       var menu_items = $('#menu a[href="'+$(evt.currentTarget).attr('href')+'"]');
 
@@ -335,6 +336,22 @@ $(document).ready(function(){
           }
       });
     });
+
+    // hover callback on menu items to highlight matching shortcut
+    if(!scope._shortcutsLoadedBefore){
+      // only create once; menu never disappears
+      scope._shortcutsLoadedBefore = true;
+      $('#menu a').hover(function(evt){
+        var shortcuts = $('div.page a.shortcut[href="'+$(evt.currentTarget).attr('href')+'"]');
+        shortcuts.each(function(idx, item){
+          if(evt.type == 'mouseenter'){
+            $(item).addClass('highlight');
+          } else if(evt.type == 'mouseleave'){
+            $(item).removeClass('highlight');
+          }
+        });
+      });
+    }
   }
 
   // CALLBACKS // // //
