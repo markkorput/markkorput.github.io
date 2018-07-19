@@ -1,1 +1,1 @@
-Sitemap: /http://shortnotion.com/_staging/sitemap.xml
+Sitemap: /_staging/sitemap.xml

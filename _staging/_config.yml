@@ -2,7 +2,7 @@ title: Short Notion // Mark van de Korput
 description: > # this means to ignore newlines until "baseurl:"
   New Media Developer, Virtual Realist, Computational Desirer
 permalink: ':title/'
-baseurl: "http://shortnotion.com/_staging/" # the subpath of your site, e.g. /blog
+baseurl: "/_staging" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 site-twitter: shortnotion #if your site has a twitter account, enter it here
 

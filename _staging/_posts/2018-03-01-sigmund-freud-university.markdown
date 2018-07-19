@@ -18,7 +18,7 @@ my role: software development
 
 tools: Unity, HTC Vive, Leap Motion
 
-crew: Mattia Nese, Professor Gianni Brighetti,
+crew: Professor Gianni Brighetti, Giulia, Mark van de Korput
 
 <br/><br/>
 
