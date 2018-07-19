@@ -1,0 +1,28 @@
+---
+layout: post
+title: vpro peepshow
+date: 2015-06-01 00:00:00 +0100
+description: live theatre virtual reality experience
+img: posts/peepshow1.jpg
+tags: [live performance, VR, video editing, post production, ]
+---
+
+# VPRO Peepshow
+_Summer 2015_
+
+[www.vpro.nl/peepshow](http://www.vpro.nl/medialab/nieuws/De-Peepshow.html)
+
+A cross-media experience involving live theatre and virtual reality. Performed in 2015 on Lowlands festival and the Dutch Design Week.
+
+crew: Ivo van Aart, Mirjam van Dijk, Steye Hallema, Mark van de Korput, Ridwan Nasruddin, Elénie Wagner, Boris van Bommel, Jilles Flinterman, Anna Keuning, Nicole Cremers, Robin van Dijk, Henk van Engelen, Mariska Schneider, Arjen Jongeneel, Brecht van Teeseling
+
+my role: R&amp;D, VR-video production, data handling and technical supervision
+tools: Kolor Autopano Video Pro, Adobe Premiere, Adobe After Effects, countless spreadsheets
+
+<iframe class="youtube" src="https://www.youtube.com/embed/1Xx0bQV83es" frameborder="0" allowfullscreen></iframe>
+
+![peepshow]({{site.baseurl}}/assets/img/posts/peepshow1.jpg)
+![peepshow]({{site.baseurl}}/assets/img/posts/peepshow2.jpg)
+![peepshow]({{site.baseurl}}/assets/img/posts/peepshow3.jpg)
+![peepshow]({{site.baseurl}}/assets/img/posts/peepshow4.jpg)
+![peepshow]({{site.baseurl}}/assets/img/posts/peepshow5.jpg)

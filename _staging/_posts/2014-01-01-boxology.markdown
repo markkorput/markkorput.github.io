@@ -1,0 +1,24 @@
+---
+layout: post
+title: boxology
+date: 2014-01-01 00:00:00 +0100
+description: immersive viewing experience with biofeedback
+img: posts/boxology-shortcut2.png
+tags: [projection, installation, arduino]
+---
+
+# Boxology
+_2014_
+
+School project; an interactive installation where the viewer's heartbeat affects the viewing-experience.
+
+my role: concept, technical development, physical construction
+
+tools: Arduino, Processing, Resolume Arena, A nailgun
+
+crew: Mark van de Korput, Staas Kirligitsis
+
+<iframe class="youtube" src="https://www.youtube.com/embed/UlxOzCRuFZw" frameborder="0" allowfullscreen></iframe>
+
+![boxology]({{site.baseurl}}/assets/img/posts/boxology-shortcut1.png)
+![boxology]({{site.baseurl}}/assets/img/posts/boxology-shortcut2.png)
