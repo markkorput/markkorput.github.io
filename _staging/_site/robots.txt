@@ -1,1 +1,0 @@
-Sitemap: /_staging/sitemap.xml
