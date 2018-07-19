@@ -1,0 +1,34 @@
+---
+layout: main
+---
+<article class="article-page">
+  <div class="page-content">
+    {% if page.img %}
+      <div class="page-cover-image" style="background-image:url({{ "/assets/img/" | prepend: site.baseurl | append : page.img}})">
+
+        <div class="logoborder borderL">
+        <div class="logoborder borderT">
+        <div class="logoborder borderR">
+        <div class="logoborder borderB">
+          &nbsp;
+        </div></div></div></div>
+      </div> <!-- End Page Cover Image -->
+    {% else %}
+    {% endif %}
+
+
+    <div class="wrap-content">
+      <div class="page-tag">
+        <!-- {% for tag in page.tags %}
+          <a href="{{site.baseurl}}/tags#{{tag}}" class="tag">&#35; {{ tag }}</a>
+        {% endfor %} -->
+      </div>
+
+      <!-- <header class="header-page">
+        <h1 class="page-title">{{page.title}}</h1>
+        <div class="page-date"><span>{{page.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+      </header> -->
+      {{content | markdownify}}
+    </div> <!-- End Wrap Content -->
+  </div> <!-- End Page Content -->
+</article> <!-- End Article Page -->
