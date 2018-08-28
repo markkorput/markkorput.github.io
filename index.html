@@ -1,403 +1,454 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Short Notion // Mark van de Korput</title>
-    <link rel="icon" type="image/png" href="favicon-32x32-alpha.png" sizes="32x32">
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Short Notion // Mark van de Korput</title>
 
-    <!-- pinterest domain ownership verification -->
-    <meta name="p:domain_verify" content="8c7a1d15447d53d6c2716e6f0e2c8430"/>
+  <!-- Edit site and author settings in `_config.yml` to make the social details your own -->
 
-    <!-- <link rel="stylesheet" href="styles.css" /> -->
-    <style>
-      body { font-family: Helvetica, Arial, Sans-Serif; font-size: 14px; padding-bottom: 50px; }
-      a { color: black; text-decoration: none; margin-bottom: 2px; }
-      a:hover{ text-decoration: underline; }
+    <meta content="Short Notion // Mark van de Korput" property="og:site_name">
+  
+    <meta content="Short Notion // Mark van de Korput" property="og:title">
+  
+  
+    <meta content="website" property="og:type">
+  
+  
+    <meta content="New Media Developer, Virtual Realist, Computational Desirer
+" property="og:description">
+  
+  
+    <meta content="/" property="og:url">
+  
+  
+  
+    <meta content="/assets/img/logo-shortnotion-400x400.png" property="og:image">
+  
+  
+  
 
-      #menu { position: fixed; top: 30px; left: 40px; line-height: 20px; background-color: rgba(255,255,255,0.9); padding: 15px; z-index:10; box-shadow: 5px 5px 3px rgba(0,0,0,0.05); }
-      #menu span.subtitle{ margin:0; margin-left: 0px; display: block; font-style: italic; display: block; width: 135px; font-size: 12px; }
-      #menu span.subtitle:nth-of-type(2){margin-bottom: 0; margin-left: 10px;}
-      #menu span.subtitle:nth-of-type(3){margin-left: 20px; margin-bottom: 20px;}
-      #menu a{ display: block; font-size: 12px; max-width: 150px; }
-      #menu a.header{ font-size: 14px; text-decoration: none; }
-      #menu a.header:hover{ text-decoration: underline; }
-      #menu a.highlight{ text-decoration: underline; }
-      #menu img{ display: none; }
-      #menu h1{ margin-top: 0; }
-      #menu h4{ margin-bottom: 0; }
-      #menu a.icon{ display: inline-block; }
-      #menu a.icon img{ display: block; width:16px; margin:0; }
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@shortnotion">
+    <meta name="twitter:creator" content="@shortnotion">
+  
+    <meta name="twitter:title" content="Short Notion // Mark van de Korput">
+  
+  
+    <meta name="twitter:url" content="/">
+  
+  
+    <meta name="twitter:description" content="New Media Developer, Virtual Realist, Computational Desirer
+">
+  
+  
+    <meta name="twitter:image:src" content="/assets/img/logo-shortnotion-400x400.png">
+  
 
-      #menu.version2 img{ display: block; width: 150px; margin: -10px 0 0 -10px; padding: 0; }
-      #menu.version2 h1{ display: none; }
-      #menu.version2 span.subtitle{ margin-left: 0px; }
-      #menu.version2 span.subtitle:nth-of-type(2){margin-bottom: 0; margin-left: 10px;}
-      #menu.version2 span.subtitle:nth-of-type(3){margin-left: 20px; margin-bottom: 20px;}
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta property="og:image" content="">
+  <link rel="icon" type="image/png" href="/assets/img/favicon-32x32-alpha.png" sizes="32x32">
+	<link rel="shortcut icon" href="/assets/img/favicon-32x32-alpha.png" type="image/x-icon">
 
-      #footer{ margin:30px 0 50px 250px; width: 600px; padding: 8px 20px; text-align: center; color: #BBB; background-color: rgba(255,255,255,0.9); box-shadow: 5px 5px 3px rgba(0,0,0,0.05); }
-      #footer span{ position: relative; bottom: 8px; margin: 0 10px; }
-      #footer svg{ fill: #BBB; }
+	<link rel="apple-touch-icon" href="/assets/img/favicon/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicon/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicon/apple-touch-icon-114x114.png">
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#263959">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#263959">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#263959">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="/assets/fonts/font-awesome/css/font-awesome.min.css">
+	<!-- Styles -->
+	<link rel="stylesheet" href="/assets/css/main.css">
 
-      .page { display: none; margin:30px 0 0 250px; width: 600px; padding: 10px 20px; z-index:10; background-color: rgba(255,255,255,0.9); box-shadow: 5px 5px 3px rgba(0,0,0,0.05); }
-      .page p.details{ font-size: 12px; color: #666; }
-      .page a{ font-weight: bold; }
-      .page p.links a{ display: block; }
-      .page img,
-      .page iframe { display: block; width: 100%; margin:0 0 20px 0}
-      .page iframe.vimeo{ display: block; width: 600px; height: 337px; }
-      .page iframe.youtube{ display: block; width: 600px; height: 337px; }
-      .page iframe.youtube.small{ display: inline-block; width: 187px; height: 105px; }
-      .page img.shortcut{ display: none; }
-      .page.shortnotion img.shortcut{ display: block; }
+	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic&v1' type='text/css'>
+	<link href="https://fonts.googleapis.com/css?family=Anonymous+Pro" rel="stylesheet">
+</head>
 
-      #backdrop{ position: fixed; top: -10px; left: -5px; display: block; padding:0; margin:0; font-family: monospace; z-index: -1; color: #EEE; font-size: 14px; word-break: break-all; }
-      #backdrop.calibrating{ word-break: normal; }
-      #backdrop .highlight{color: #DDD;}
+<body>
 
-      /* home page */
-      .page.shortnotion{ background-color:transparent; box-shadow: none; }
-      .page.shortnotion a.shortcut{ display: block; height: 150px; overflow: hidden;}
-      .page.shortnotion a.shortcut{ -webkit-filter: grayscale(100%); filter: grayscale(100%); }
-      .page.shortnotion a.shortcut.highlight,
-      .page.shortnotion a.shortcut:hover{ -webkit-filter: grayscale(0%); filter: grayscale(0%); }
-      .page.shortnotion a.shortcut span.overlay{z-index: 20; display: block; width: 100%; height: 100%; position: absolute;}
+  <div class="wrapper">
+    <aside class="sidebar">
+  <header>
+    <div class="about">
+      <div class="cover-author-image">
+        <a href="/"><img src="/assets/img/logo-shortnotion-400x400.png" alt="Mark van de Korput"></a>
+      </div>
+      <!-- <div class="author-name">Mark van de Korput</div> -->
+      <!-- <p>New Media Developer, Virtual Realist, Computational Desirer.</p> -->
 
+      <section class="contact">
+        <!-- <h3 class="contact-title">Get In Touch</h3> -->
+        <ul>
+          
+            <li><a href="https://twitter.com/shortnotion" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+          
+          
+          
+            <li class="github"><a href="http://github.com/markkorput" target="_blank"><i class="fa fa-github"></i></a></li>
+          
+          
+            <li class="linkedin"><a href="https://in.linkedin.com/in/mark-van-de-korput-51038619" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+          
+          
+            <li class="email"><a href="mailto:shortnotion@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+          
+        </ul>
+      </section> <!-- End Section Contact -->
 
-      /* contact page */
-      .page.contact img{ margin-bottom: 3px; }
-      .page.contact span.credit{ display: block; width:100%; font-size: 8px; text-align: right; }
-    </style>
-
-    <!-- <script type='text/javascript' src="js/jquery-3.1.0.min.js"></script> -->
-    <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <!-- <script type='text/javascript' src="js/underscore-1.8.3.min.js"></script> -->
-    <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-    <!-- <script type='text/javascript' src="js/backbone-1.3.3.min.js"></script> -->
-    <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js"></script>
-
-    <script type='text/javascript' src="script.js"></script>
-  </head>
-  <body>
-    <div id="backdrop">&nbsp;</div>
-
-    <div id="menu" class="version2">
-      <a href="#">
-        <img src="images/logo-shortnotion-400x400.png" title="logo" />
-      </a>
-      <h1>short<br/>notion</h1>
-      <span class="subtitle">mark van de korput</span>
-      <span class="subtitle">new media developer</span>
-      <span class="subtitle">based in Amsterdam</span>
-
-      <a href="#page/updates">updates</a>
-      <a href="#page/contact">contact</a>
-      <a class="icon" href="https://github.com/markkorput" target="_blank">
-        <img src="images/icon-github.png" alt="github" title="github" />
-      </a>
-      <a class="icon" href="https://nl.linkedin.com/in/mark-van-de-korput-51038619" target="_blank">
-        <img src="images/icon-linkedin.png" alt="linkedin" title="linkedin" />
-      </a>
-      <a class="icon" href="https://www.twitter.com/shortnotion" target="_blank">
-        <img src="images/icon-twitter.png" alt="twitter" title="twitter" />
-      </a>
-
-      <a href="#" class="header"><h4>work</h4></a>
-      <a href="#page/insidetrumpshead">Inside Trump's Head</a>
-      <a href="#page/ntr-libris">NTR Libris Geschiedenis Prijs Shortlist 2016</a>
-      <a href="#page/hallofheroes">Hall of Heroes</a>
-      <a href="#page/whitespots">White Spots</a>
-      <a href="#page/2030">2030</a>
-      <a href="#page/peepshow">VPRO Peepshow</a>
-      <a href="#page/justlikeyourmom">Just Like Your Mom</a>
-      <a href="#page/localprojects">Local Projects</a>
-      <a href="#page/wohnzimmertour">Tim Vantol Wohnzimmer Tour</a>
-      <a href="#page/boxology">Boxology</a>
-      <a href="#page/backseatsessions">Backseat Sessions</a>
-    </div>
-
-    <div class="page"></div>
-
-    <div id="footer">
-      <span>Hosted at</span>
-      <svg height="28" version="1.1" viewBox="0 0 16 16" width="28"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
-      <span>GitHub pages</span>
-    </div>
-
-    <template class="page" id="updates">
-      <a class="twitter-timeline" href="https://twitter.com/shortnotion">Tweets by shortnotion</a>
-      <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    </template>
-
-
-    <template class="page" id="contact">
-      <h1>Get in touch</h1>
-      <p>short notion is:<br/>
-      mark van de korput</p>
-      <p>and can be reached at:<br/>
-      shortnotion@gmail.com</p>
-      <img src="images/newyear.jpg" />
-      <span class="credit">Photo by Thomas Kruijper and his phone.</span>
-    </template>
-
-    <template class="page" id="hallofheroes">
-      <h1>Hall of Heroes</h1>
-      <p>2016</p>
-      <p class="links">
-        <a href="http://www.afgefackt.com/#!hall-of-heroes/egy2n" target="_blank">www.afgefackt.com</a>
-        <a href="http://overhetij.nl/programma/voorstelling/?id=64" target="_blank">www.overhetij.nl</a>
-      </p>
-      <p>Video installation by Afgefackt for the Over het IJ theater festival in Amsterdam.</p>
-      <p class="details">crew: Afgefackt (Mirjam van Dijk and Élénie Wagner), Two Feathers (Davey Bakker and Hayo de Kruijf), Mark van de Korput, Huig van den Hoofdakker, Florian Knapp.</p>
-      <p class="details">my role: installation design and installation controls</p>
-      <p class="details">tools: RaspberryPI, python, OSC, MIDI</p>
-      <img src="images/hoh-01.jpg" />
-      <img src="images/hoh-02.jpg" />
-      <img src="images/hoh-03.jpg" />
-      <img src="images/hoh-04.jpg" />
-      <img src="images/hoh-05.jpg" />
-      <img src="images/hoh-flyer1.png" title="Hall of Heroes flyer front" />
-      <!-- <img src="images/hoh-flyer2.png" title="Hall of Heroes flyer back" /> -->
-    </template>
-
-    <template class="page" id="2030">
-      <h1>2030</h1>
-      <p>2016</p>
-      <p>Interdisciplinary collaborative graduation project</p>
-      <p class="details">my role: visual producer, software developer</p>
-      <p class="details">tools: Raspberry PIs, Projectors, miles of network cables, OpenFrameworks, Python, Ableton</p>
-      <p class="details">More information coming soon</p>
-      <img src="images/2030-poster.png" title="2030 poster" />
-      <img src="images/2030-01.jpg" />
-      <img src="images/2030-02.jpg" />
-      <img src="images/2030-03.png" />
-      <img src="images/2030-04.png" />
-      <img src="images/2030-05.png" />
-    </template>
-
-    <template class="page" id="whitespots">
-      <h1>White Spots</h1>
-      <p>2016</p>
-      <p class="links">
-        <a href="http://www.vpro.nl/over-de-vpro/white-spots.html" target="_blank">www.vpro.nl/over-de-vpro/white-spots.html</a>
-      </p>
-      <p>White Spots is a multimedia project by the VPRO. Through various media (television documentary, a meetup, an app and VR-video) it unfolds the story of how global connectivity is affecting our lives.</p>
-      <p class="details">crew: Bregtje van der Haak, Richard Vijgen, Mariska Schneider, Mark van de Korput, Sam Huisman, Henk Spook.</p>
-      <p class="details">my role: VR-camera and post-production.</p>
-      <p class="details">tools: GoPro, Kolor Autopano Video Pro, Adobe Premiere, Adobe After Effects</p>
-      <img src="images/whitespots-promo.jpg" title="White Spots App Promo" />
-      <img src="images/whitespots-map.jpg" title="White Spots Map" />
-      <img src="images/whitespots-vis.jpg" title="White Spots Data Visualisation" />
-      <img src="images/whitespots-screenshot1.png" title="White Spots Screenshot" />
-      <img src="images/whitespots-screenshot2.png" title="White Spots Screenshot" />
-      <img src="images/whitespots-screenshot3.png" title="White Spots Screenshot" />
-      <img src="images/whitespots-process1.jpg" title="White Spots Behind the Scenes" />
-      <img src="images/whitespots-process2.jpg" title="White Spots Behind the Scenes" />
-    </template>
-
-    <template class="page" id="peepshow" data-name="VPRO Peepshow">
-      <h1>VPRO Peepshow</h1>
-      <p>2015</p>
-      <p class="links">
-        <a href="http://www.vpro.nl/medialab/nieuws/De-Peepshow.html" target="_blank">www.vpro.nl/peepshow</a>
-      </p>
-      <p>A cross-media experience involving live theatre and virtual reality. Performed in 2015 on Lowlands festival and the Dutch Design Week.</p>
-      <p class="details">crew: Ivo van Aart, Mirjam van Dijk, Steye Hallema, Mark van de Korput, Ridwan Nasruddin, Elénie Wagner, Boris van Bommel, Jilles Flinterman, Anna Keuning, Nicole Cremers, Robin van Dijk, Henk van Engelen, Mariska Schneider, Arjen Jongeneel, Brecht van Teeseling<p>
-      <p class="details">my role: R&amp;D, VR-video production, data handling and technical supervision</p>
-      <p class="details">tools: Kolor Autopano Video Pro, Adobe Premiere, Adobe After Effects, countless spreadsheets</p>
-      <iframe class="youtube" src="https://www.youtube.com/embed/1Xx0bQV83es" frameborder="0" allowfullscreen></iframe>
-      <img src="images/peepshow1.jpg" />
-      <img src="images/peepshow2.jpg" />
-      <img src="images/peepshow3.jpg" />
-      <img src="images/peepshow4.jpg" />
-      <img src="images/peepshow5.jpg" />
-    </template>
-
-    <template class="page" id="localprojects">
-      <h1>Local Projects</h1>
-      <p>2014 - 2015</p>
-      <p class="links">
-        <a href="http://www.localprojects.com/project/cooper-hewitt-smithsonian-design-museum/" target="_blank">www.localprojects.com</a>
-      </p>
-      <p>As development & UX design intern at Local Projects I worked on the interactives that are part of the permanent re-opening exhibition of the Cooper Hewitt Smithsonian Design Museum in New York.</p>
-      <p class="details">crew: Jake Barton, Sundar Raman, Orio Ferrer Mesià, Kristen Svorka, Angela Chen, Philipp Rockel, Mark van de Korput, Kimberly Gim, Paul Hoppe<p>
-      <p class="details">my role: software development, interaction design</p>
-      <p class="details">tools: OpenFrameworks and a (t)rusty single-speed</p>
-      <iframe class="vimeo" src="https://player.vimeo.com/video/121152071" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-    </template>
-
-    <template class="page" id="justlikeyourmom">
-      <h1>Just Like Your Mom</h1>
-      <p>2015</p>
-      <p class="links">
-        <a href="http://www.justlikeyourmom.com" target="_blank">www.justlikeyourmom.com</a>
-      </p>
-      <p>Promo video / after movie for Just Like Your Mom vegan catering and toursupport</p>
-      <p class="details">crew: Mark van de Korput, Rene Huwae<p>
-      <p class="details">my role: direction, camera, editing</p>
-      <p class="details">tools: Adobe Suite</p>
-      <iframe class="youtube" src="https://www.youtube.com/embed/C9bkFnu51V4" frameborder="0" allowfullscreen></iframe>
-    </template>
-
-    <template class="page" id="wohnzimmertour">
-      <h1>Tim Vantol Wohnzimmer Tour</h1>
-      <p>2014</p>
-      <p class="links"><a href="http://www.timvantol.com" target="_blank">www.timvantol.com</a></p>
-      <p>Mini tour-documentary series following Tim, Justin and Sjors as they hitch-hike their way through southern Germany, playing acoustic living room shows.</p>
-      <p class="details">crew: Mark van de Korput, Tim van Tol, Justin Ghijsen, Sjors van Reeuwijk, Maurits de Vries</p>
-      <p class="details">my role: direction, camera, editing, post-production</p>
-      <p class="details">tools: Adobe Suite and a slide track</p>
-      <iframe class="youtube" src="https://www.youtube.com/embed/NkIAlps5Zu8" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube" src="https://www.youtube.com/embed/_O1NxHBiZvQ" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube" src="https://www.youtube.com/embed/h0G0oxKaOXk" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube" src="https://www.youtube.com/embed/8J8YPtYY5MY" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube" src="https://www.youtube.com/embed/syc98D-X7Wc" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube" src="https://www.youtube.com/embed/9Di0d00HkEA" frameborder="0" allowfullscreen></iframe>
-      <img src="images/wohnzimmer-shortcut1.png" class="shortcut" />
-      <img src="images/wohnzimmer-shortcut2.png" class="shortcut" />
-      <img src="images/wohnzimmer-shortcut3.png" class="shortcut" />
-    </template>
-
-    <template class="page" id="boxology">
-      <h1>Boxology</h1>
-      <p>2014</p>
-      <p>School project; an interactive installation where the viewer's heartbeat affects the viewing-experience.</p>
-      <p class="details">crew: Mark van de Korput, Staas Kirligitsis<p>
-      <p class="details">my role: concept, technical development, physical construction</p>
-      <p class="details">tools: Arduino, Processing, Resolume Arena, A nailgun</p>
-      <iframe class="youtube" src="https://www.youtube.com/embed/UlxOzCRuFZw" frameborder="0" allowfullscreen></iframe>
-      <img src="images/boxology-shortcut1.png" class="shortcut" />
-      <img src="images/boxology-shortcut2.png" class="shortcut" />
-    </template>
-
-    <template class="page" id="backseatsessions">
-      <h1>BackSeat Sessions</h1>
-      <p>2011 - present</p>
-      <p class="links"><a href="https://www.facebook.com/backseatsessions" target="_blank">www.facebook.com/backseatsessions</a></p>
-      <p>On-going personal side-project featuring bands, acoustic guitars and moving vehicles.</p>
-      <p class="details">crew: Mark van de Korput and friends<p>
-      <p class="details">tools: DSLR, Zoom, Lapel Mics, Adobe Suite and gallons of gasoline</p>
-
-      <iframe class="youtube small" src="https://www.youtube.com/embed/8k3WNDLCl6s?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/ee1LFctCQP8?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/pMWCi4qtdGk?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-
-      <p><a id="showall" href="#page/backseatsessionsall">show all episodes</a></p>
-      <p><a href="https://www.youtube.com/playlist?list=PL132C4090C6505F93" target="_blank">go to the Youtube playlist</a></p>
-
-      <img src="images/bss-shortcut1.png" class="shortcut" />
-      <img src="images/bss-shortcut2.png" class="shortcut" />
-      <img src="images/bss-shortcut3.png" class="shortcut" />
-    </template>
-
-    <template class="page" id="backseatsessionsall">
-      <h1>BackSeat Sessions</h1>
-      <p>2011 - present</p>
-      <p class="links"><a href="https://www.facebook.com/backseatsessions" target="_blank">www.facebook.com/backseatsessions</a></p>
-      <p>On-going personal side-project featuring bands, acoustic guitars and moving vehicles.</p>
-      <p class="details">crew: Mark van de Korput and friends<p>
-      <p class="details">tools: DSLR, Zoom, Lapel Mics, Adobe Suite and gallons of gasoline</p>
-
-      <iframe class="youtube small" src="https://www.youtube.com/embed/Zdi1FbRedwE?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/FWFoEwJ73C0?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/ee1LFctCQP8?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/96bOk33rWek?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/Ew34FKGGORw?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/TT6knWw2sBk?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/pMWCi4qtdGk?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/hKtM4lamYFo?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/d-ZNMPRAtuw?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/BuI25-XCnrM?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/SNTPpEoZqMQ?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/WW-IjwBSAkM?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/uYGI5MkGEKY?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/6QJlyRNQ828?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/ZH7R91dlHHg?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/YmYb1mWnrrE?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/3yieSXT5nvo?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/sG6edA8gkyQ?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/iBze25pKYAk?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/3jBz0TYC-eU?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/8k3WNDLCl6s?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/9t_i0XDWJaY?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/BYsI2r_aJI8?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/sa045KiXuEs?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/l22xC9fTNug?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/uzumsf7N0Vg?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/wN3bK9sh6go?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/URmqq5CB8Oc?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/w8PKdmaLqDM?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/9vdcOx9YdPE?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/57AkUvFifAc?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/eXJt2FulVk0?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/Opx8KS6fLm0?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/Nlc30oeDv9k?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/UGEyw9MZwDk?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/HiXIQRbcsXM?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/3_7CuUk4M70?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/bvF9SeMV5jI?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/vBlZO34o9dY?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-      <iframe class="youtube small" src="https://www.youtube.com/embed/-94ES4fdxhI?list=PL132C4090C6505F93" frameborder="0" allowfullscreen></iframe>
-
-
-      <p><a href="https://www.youtube.com/playlist?list=PL132C4090C6505F93" target="_blank">go to the Youtube playlist</a></p>
-    </template>
-
-    <template class="page" id="ntr-libris">
-      <h1>NTR Libris Geschiedenis Prijs 2016</h1>
-      <p>2016</p>
-      <p class="links">
-        <a href="http://www.npo.nl/shortlist-libris-geschiedenis-prijs-2016/17-09-2016/WO_NTR_5128864" target="_blank">video of nominee Machiel Bosman</a>
-        <a href="http://www.npo.nl/shortlist-libris-geschiedenis-prijs-2016/17-09-2016/WO_NTR_5128868" target="_blank">video of nominee Annejet van der Zijl</a>
-        <a href="http://www.npo.nl/shortlist-libris-geschiedenis-prijs-2016/17-09-2016/WO_NTR_5128865" target="_blank">video of nominee Philip Dröge</a>
-        <a href="http://www.npo.nl/shortlist-libris-geschiedenis-prijs-2016/17-09-2016/WO_NTR_5128867" target="_blank">video of nominee Lodewijk Petram</a>
-        <a href="http://www.npo.nl/shortlist-libris-geschiedenis-prijs-2016/17-09-2016/WO_NTR_5128866" target="_blank">video of nominee Elisabeth Leijnse</a>
-      </p>
-      <p>
-        Director <a href="http://www.ivovanaart.com/" target="_blank">Ivo van Aart</a>
-        asked me to help spice up the introduction videos for the nominees of the
-        <a href="https://www.libris.nl/non-fictie/libris-geschiedenis-prijs/" target="_blank">Libris Geschiedenis Prijs 2016</a>
-        (a price for writers of non-fictional history books).
-        Together with <a href="http://www.mirjamvandijk.com/" target="_blank">Mirjam van Dijk</a>
-        I created a stage of plexiglas frames, projections and smoke that would float around the writers
-        like thoughts and memories while they explain what their books are about.
-      </p>
-      <p class="details">crew: Ivo van Aart, Thomas van der Gronde, Mirjam van Dijk, Mark van de Korput</p>
-      <p class="details">my role: stage design, projection & smoke technician</p>
-      <p class="details">tools: RaspberryPI, python, OSC, Midi</p>
-      <img src="images/libris01.png" />
-      <img src="images/libris02.png" />
-      <img src="images/libris03.png" />
-      <img src="images/libris04.png" />
-      <img src="images/libris05.png" />
-      <img src="images/libris06.png" />
-      <img src="images/libris07.png" />
-      <img src="images/libris08.png" />
-      <img src="images/libris09.png" />
-    </template>
-
-    <template class="page" id="insidetrumpshead">
-      <h1>Inside Trump's Head</h1>
-      <p>2016</p>
-      <p class="links">
-        <a href="https://www.jauntvr.com/title/86827a514e" target="_blank">JauntVR</a>
-        <a href="http://www.boomchicago.nl/" target="_blank">Boom Chicago</a>
-      </p>
-      <p>
-        A VR comedy piece showing a day in the life of virtual president Donald Trump.
-        Written and performed by Boom Chicago, directed by Steye Hallema and produced by JauntVR.
+      <section class="menu">
+        mark van de korput
+        <br/>
+        new media developer
         <br/><br/>
-        This project had an extreme tight turnaround, with only a week between the day of the shoot
-        and the post-production deadline.
-        On top of that, the entire production was done with a very small team, requiring everybody
-        to be flexible and assume multiple roles.
-      </p>
-      <p class="details">crew: Steye Hallema, Mark van de Korput, Henk Spook</p>
-      <p class="details">my role: DOP, Camera Operator, Data Handling, Editing, Compositing</p>
-      <p class="details">tools: Jaunt ONE VR Camera, Jaunt toolchain, Adobe CC suite, Hackintosh Render Beast, Steye's crazy 3-wheeled longboard</p>
-      <iframe class="youtube" src="https://www.youtube.com/embed/myrC9KdIwi0" frameborder="0" allowfullscreen></iframe>
-      <img src="images/trump-pano.jpg" />
-      <img src="images/trump-cam.jpg" />
-      <img src="images/trump-data.jpg" />
-    </template>
-  </body>
+
+        
+      </section>
+
+    </div>
+  </header> <!-- End Header -->
+
+  <footer>
+    <!-- <div class="copyright">
+      <p>2018 &copy; Mark van de Korput</p>
+    </div> -->
+  </footer> <!-- End Footer -->
+</aside> <!-- End Sidebar -->
+<div class="content-box clearfix">
+  
+<article class="post">
+  
+    <div class="post-thumbnail">
+      <a style="background-image: url(/assets/img/posts/salone-08.png)" href="/salone-del-mobile/">
+        <div class="logoborder borderL">
+        <div class="logoborder borderT">
+        <div class="logoborder borderR">
+        <div class="logoborder borderB">
+        </div></div></div></div>
+    </a>
+    </div>
+  
+  <div class="post-content">
+    <a href="/salone-del-mobile/">bar anne @ salone del mobile 2018</a>
+    <!-- <p>Bar Anne @ Salone del Mobile 2018 March / April 2018 Children of the Light...</p> -->
+    <span class="post-date">2018</span>
+    <!-- <span class="post-words">1 minute read</span> -->
+  </div>
+</article>
+
+<article class="post">
+  
+    <div class="post-thumbnail">
+      <a style="background-image: url(/assets/img/posts/freud-02.png)" href="/sigmund-freud-university/">
+        <div class="logoborder borderL">
+        <div class="logoborder borderT">
+        <div class="logoborder borderR">
+        <div class="logoborder borderB">
+        </div></div></div></div>
+    </a>
+    </div>
+  
+  <div class="post-content">
+    <a href="/sigmund-freud-university/">sigmund freud university</a>
+    <!-- <p>Sigmund Freud University early 2018 Sigmund Freud University di Milano For the Sigmund Freud University...</p> -->
+    <span class="post-date">2018</span>
+    <!-- <span class="post-words">1 minute read</span> -->
+  </div>
+</article>
+
+<article class="post">
+  
+    <div class="post-thumbnail">
+      <a style="background-image: url(/assets/img/posts/light-ceremony-01.jpg)" href="/light-ceremony/">
+        <div class="logoborder borderL">
+        <div class="logoborder borderT">
+        <div class="logoborder borderR">
+        <div class="logoborder borderB">
+        </div></div></div></div>
+    </a>
+    </div>
+  
+  <div class="post-content">
+    <a href="/light-ceremony/">light ceremony space @ ADE 2017</a>
+    <!-- <p>Light Ceremony Space @ ADE 2017 September 2017 Children of the Light For the Light...</p> -->
+    <span class="post-date">2017</span>
+    <!-- <span class="post-words">1 minute read</span> -->
+  </div>
+</article>
+
+<article class="post">
+  
+    <div class="post-thumbnail">
+      <a style="background-image: url(/assets/img/posts/halos-3.png)" href="/warping-halos/">
+        <div class="logoborder borderL">
+        <div class="logoborder borderT">
+        <div class="logoborder borderR">
+        <div class="logoborder borderB">
+        </div></div></div></div>
+    </a>
+    </div>
+  
+  <div class="post-content">
+    <a href="/warping-halos/">warping halos</a>
+    <!-- <p>Warping Halos early 2017 Children of the Light Warping Halos Live @ STRP 2017 For...</p> -->
+    <span class="post-date">2017</span>
+    <!-- <span class="post-words">2 minute read</span> -->
+  </div>
+</article>
+
+<article class="post">
+  
+    <div class="post-thumbnail">
+      <a style="background-image: url(/assets/img/posts/trump-cover.jpg)" href="/inside-trumps-head/">
+        <div class="logoborder borderL">
+        <div class="logoborder borderT">
+        <div class="logoborder borderR">
+        <div class="logoborder borderB">
+        </div></div></div></div>
+    </a>
+    </div>
+  
+  <div class="post-content">
+    <a href="/inside-trumps-head/">inside trump's head</a>
+    <!-- <p>Inside Trump’s Head late 2016 JauntVR Boom Chicago A VR comedy piece showing a day...</p> -->
+    <span class="post-date">2016</span>
+    <!-- <span class="post-words">1 minute read</span> -->
+  </div>
+</article>
+
+<article class="post">
+  
+    <div class="post-thumbnail">
+      <a style="background-image: url(/assets/img/posts/hoh-01.jpg)" href="/hall-of-heroes/">
+        <div class="logoborder borderL">
+        <div class="logoborder borderT">
+        <div class="logoborder borderR">
+        <div class="logoborder borderB">
+        </div></div></div></div>
+    </a>
+    </div>
+  
+  <div class="post-content">
+    <a href="/hall-of-heroes/">hall of heroes</a>
+    <!-- <p>Hall of Heroes July 2016 www.afgefackt.com www.overhetij.nl A video-installation by Afgefackt for the 2016 edition...</p> -->
+    <span class="post-date">2016</span>
+    <!-- <span class="post-words">1 minute read</span> -->
+  </div>
+</article>
+
+<article class="post">
+  
+    <div class="post-thumbnail">
+      <a style="background-image: url(/assets/img/posts/libris02.png)" href="/ntr-libris/">
+        <div class="logoborder borderL">
+        <div class="logoborder borderT">
+        <div class="logoborder borderR">
+        <div class="logoborder borderB">
+        </div></div></div></div>
+    </a>
+    </div>
+  
+  <div class="post-content">
+    <a href="/ntr-libris/">ntr libris geschiedenis prijs shortlist 2016</a>
+    <!-- <p>NTR Libris Geschiedenis Prijs 2016 2016 Director Ivo van Aart asked me to help spice...</p> -->
+    <span class="post-date">2016</span>
+    <!-- <span class="post-words">1 minute read</span> -->
+  </div>
+</article>
+
+<article class="post">
+  
+    <div class="post-thumbnail">
+      <a style="background-image: url(/assets/img/posts/2030-01.jpg)" href="/2030/">
+        <div class="logoborder borderL">
+        <div class="logoborder borderT">
+        <div class="logoborder borderR">
+        <div class="logoborder borderB">
+        </div></div></div></div>
+    </a>
+    </div>
+  
+  <div class="post-content">
+    <a href="/2030/">2030</a>
+    <!-- <p>2030 June 2016 As my graduation I did an interdisciplinary collaboration with students from the...</p> -->
+    <span class="post-date">2016</span>
+    <!-- <span class="post-words">1 minute read</span> -->
+  </div>
+</article>
+
+<article class="post">
+  
+    <div class="post-thumbnail">
+      <a style="background-image: url(/assets/img/posts/justlikeyourmom-01.jpg)" href="/just-like-your-mom/">
+        <div class="logoborder borderL">
+        <div class="logoborder borderT">
+        <div class="logoborder borderR">
+        <div class="logoborder borderB">
+        </div></div></div></div>
+    </a>
+    </div>
+  
+  <div class="post-content">
+    <a href="/just-like-your-mom/">just like your mom</a>
+    <!-- <p>Just Like Your Mom June 2015 www.justlikeyourmom.com Promo video / after movie for Just Like...</p> -->
+    <span class="post-date">2016</span>
+    <!-- <span class="post-words">1 minute read</span> -->
+  </div>
+</article>
+
+<article class="post">
+  
+    <div class="post-thumbnail">
+      <a style="background-image: url(/assets/img/posts/whitespots-promo.jpg)" href="/WhiteSpots/">
+        <div class="logoborder borderL">
+        <div class="logoborder borderT">
+        <div class="logoborder borderR">
+        <div class="logoborder borderB">
+        </div></div></div></div>
+    </a>
+    </div>
+  
+  <div class="post-content">
+    <a href="/WhiteSpots/">white spots</a>
+    <!-- <p>White Spots Early 2016 http://www.vpro.nl/over-de-vpro/white-spots.html White Spots is a multimedia project by the VPRO. Through...</p> -->
+    <span class="post-date">2016</span>
+    <!-- <span class="post-words">1 minute read</span> -->
+  </div>
+</article>
+
+<article class="post">
+  
+    <div class="post-thumbnail">
+      <a style="background-image: url(/assets/img/posts/peepshow1.jpg)" href="/peepshow/">
+        <div class="logoborder borderL">
+        <div class="logoborder borderT">
+        <div class="logoborder borderR">
+        <div class="logoborder borderB">
+        </div></div></div></div>
+    </a>
+    </div>
+  
+  <div class="post-content">
+    <a href="/peepshow/">vpro peepshow</a>
+    <!-- <p>VPRO Peepshow Summer 2015 www.vpro.nl/peepshow A cross-media experience involving live theatre and virtual reality. Performed...</p> -->
+    <span class="post-date">2015</span>
+    <!-- <span class="post-words">1 minute read</span> -->
+  </div>
+</article>
+
+<article class="post">
+  
+    <div class="post-thumbnail">
+      <a style="background-image: url(/assets/img/posts/cooperhewitt-02.jpg)" href="/cooperhewitt/">
+        <div class="logoborder borderL">
+        <div class="logoborder borderT">
+        <div class="logoborder borderR">
+        <div class="logoborder borderB">
+        </div></div></div></div>
+    </a>
+    </div>
+  
+  <div class="post-content">
+    <a href="/cooperhewitt/">cooper hewitt smithsonian design museum</a>
+    <!-- <p>Cooper Hewitt Smithsonian Design Museum September 2014 - January 2015 cooperhewitt.org www.localprojects.com As development &amp;...</p> -->
+    <span class="post-date">2014</span>
+    <!-- <span class="post-words">1 minute read</span> -->
+  </div>
+</article>
+
+<article class="post">
+  
+    <div class="post-thumbnail">
+      <a style="background-image: url(/assets/img/posts/wohnzimmer-shortcut1.png)" href="/wohnzimmer-tour/">
+        <div class="logoborder borderL">
+        <div class="logoborder borderT">
+        <div class="logoborder borderR">
+        <div class="logoborder borderB">
+        </div></div></div></div>
+    </a>
+    </div>
+  
+  <div class="post-content">
+    <a href="/wohnzimmer-tour/">wohnzimmer tour</a>
+    <!-- <p>Tim Vantol Wohnzimmer Tour 2014 www.timvantol.com Mini tour-documentary series following Tim, Justin and Sjors as...</p> -->
+    <span class="post-date">2014</span>
+    <!-- <span class="post-words">1 minute read</span> -->
+  </div>
+</article>
+
+<article class="post">
+  
+    <div class="post-thumbnail">
+      <a style="background-image: url(/assets/img/posts/boxology-shortcut2.png)" href="/boxology/">
+        <div class="logoborder borderL">
+        <div class="logoborder borderT">
+        <div class="logoborder borderR">
+        <div class="logoborder borderB">
+        </div></div></div></div>
+    </a>
+    </div>
+  
+  <div class="post-content">
+    <a href="/boxology/">boxology</a>
+    <!-- <p>Boxology 2014 School project; an interactive installation where the viewer’s heartbeat affects the viewing-experience. my...</p> -->
+    <span class="post-date">2014</span>
+    <!-- <span class="post-words">1 minute read</span> -->
+  </div>
+</article>
+
+<article class="post">
+  
+    <div class="post-thumbnail">
+      <a style="background-image: url(/assets/img/posts/bss-shortcut1.png)" href="/backseat-session/">
+        <div class="logoborder borderL">
+        <div class="logoborder borderT">
+        <div class="logoborder borderR">
+        <div class="logoborder borderB">
+        </div></div></div></div>
+    </a>
+    </div>
+  
+  <div class="post-content">
+    <a href="/backseat-session/">backseat sessions</a>
+    <!-- <p>backseat sessions 2011 - 2016 www.facebook.com/backseatsessions Personal side-project featuring bands, acoustic guitars and moving vehicles....</p> -->
+    <span class="post-date">2011</span>
+    <!-- <span class="post-words">2 minute read</span> -->
+  </div>
+</article>
+
+
+<div class="container">
+  <nav class="pagination" role="pagination">
+    <ul>
+      
+
+      <!-- <p><span class="page-number">Page 1 of 1</span></p> -->
+
+      
+    </ul>
+  </nav>
+</div>
+
+
+</div>
+
+  </div>
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script> <!-- End Analytics -->
+
+</body>
 </html>
