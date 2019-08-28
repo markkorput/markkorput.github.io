@@ -1,0 +1,16 @@
+{
+"companyName": "Kuva",
+"productName": "Arranmore Island",
+"productVersion": "0.2.1",
+"dataUrl": "_0.2.1_b01.data.unityweb",
+"wasmCodeUrl": "_0.2.1_b01.wasm.code.unityweb",
+"wasmFrameworkUrl": "_0.2.1_b01.wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.2.0f1"
+}
